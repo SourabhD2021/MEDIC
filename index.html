@@ -390,51 +390,70 @@ https://templatemo.com/tm-566-medic-care
                 </div>
             </section>
 
-            <section class="section-padding" id="booking">
-                <div class="container">
-                    <div class="row">
-                    
-                        <div class="col-lg-8 col-12 mx-auto">
-                            <div class="booking-form">
-                                
-                                <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
-                            
-                                <form role="form" action="#booking" method="post">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-12">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Full name" required>
-                                        </div>
+ <section class="section-padding" id="booking">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 mx-auto">
+        <div class="booking-form">
+          <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
 
-                                        <div class="col-lg-6 col-12">
-                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
-                                        </div>
+          <!-- Added ID to form for EmailJS -->
+          <form id="contact-form">
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <input type="text" name="from_name" id="name" class="form-control" placeholder="Full name" required>
+              </div>
 
-                                        <div class="col-lg-6 col-12">
-                                            <input type="telephone" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="Phone: 123-456-7890">
-                                        </div>
+              <div class="col-lg-6 col-12">
+                <input type="email" name="from_email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+              </div>
 
-                                        <div class="col-lg-6 col-12">
-                                            <input type="date" name="date" id="date" value="" class="form-control">
-                                            
-                                        </div>
+              <div class="col-lg-6 col-12">
+                <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="Phone: 123-456-7890">
+              </div>
 
-                                        <div class="col-12">
-                                            <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
-                                        </div>
+              <div class="col-lg-6 col-12">
+                <input type="date" name="date" id="date" class="form-control">
+              </div>
 
-                                        <div class="col-lg-3 col-md-4 col-6 mx-auto">
-                                            <button type="submit" class="form-control" id="submit-button">Book Now</button>
-                                        </div>
-                                    </div>
-                                </form>
+              <div class="col-12">
+                <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
+              </div>
 
-                            </div>
-                        </div>
+              <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                <button type="submit" class="form-control" id="submit-button">Book Now</button>
+              </div>
+            </div>
+          </form>
 
-                    </div>
-                </div>
-            </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- EmailJS SDK + Script -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    // Initialize with your Public Key from EmailJS
+    emailjs.init("3bsdZjXroTzLKiPsi"); 
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm("service_xdya1jj", "template_wln1psg", this)
+      .then(() => {
+        alert("✅ Your booking request has been sent!");
+        this.reset();
+      }, (error) => {
+        alert("❌ Failed to send booking request. Error: " + JSON.stringify(error));
+      });
+  });
+</script>
+
+            
         </main>
 
         <footer class="site-footer section-padding" id="contact">
