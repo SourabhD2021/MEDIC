@@ -398,13 +398,41 @@ https://templatemo.com/tm-566-medic-care
           <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
 
           <!-- Added ID to form for EmailJS -->
-          <form id="contact-form">
-    <input type="text" name="title" placeholder="Subject" required />
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="text" name="time" placeholder="Preferred Time" />
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Send</button>
-  </form>
+         <form id="contact-form">
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      <input type="text" name="from_name" id="name" class="form-control" placeholder="Full name" required>
+    </div>
+
+    <div class="col-lg-6 col-12">
+      <input type="email" name="from_email" id="email" 
+             pattern="[^ @]*@[^ @]*" 
+             class="form-control" 
+             placeholder="Email address" 
+             required>
+    </div>
+
+    <div class="col-lg-6 col-12">
+      <input type="tel" name="phone" id="phone" 
+             pattern="(\+91)?[6-9][0-9]{9}" 
+             class="form-control" 
+             placeholder="Phone: +91 9876543210 or 9876543210" 
+             required>
+    </div>
+
+    <div class="col-lg-6 col-12">
+      <input type="date" name="date" id="date" class="form-control">
+    </div>
+
+    <div class="col-12">
+      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-6 mx-auto">
+      <button type="submit" class="form-control" id="submit-button">Book Now</button>
+    </div>
+  </div>
+</form>
 
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
