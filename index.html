@@ -390,64 +390,62 @@ https://templatemo.com/tm-566-medic-care
                 </div>
             </section>
 
- <section class="section-padding" id="booking">
+<section class="section-padding" id="booking">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-12 mx-auto">
         <div class="booking-form">
           <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
 
-          <!-- Added ID to form for EmailJS -->
-       <form id="contact-form">
-  <div class="row">
-    <div class="col-lg-6 col-12">
-      <input type="text" name="from_name" id="name" class="form-control" placeholder="Full name" required>
-    </div>
+          <!-- Booking Form -->
+          <form id="contact-form">
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <input type="text" name="from_name" id="name" class="form-control" placeholder="Full name" required>
+              </div>
 
-    <div class="col-lg-6 col-12">
-      <input type="email" name="from_email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
-    </div>
+              <div class="col-lg-6 col-12">
+                <input type="email" name="from_email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+              </div>
 
-    <div class="col-lg-6 col-12">
-      <!-- ✅ Updated for Indian mobile numbers -->
-      <input type="tel" name="phone" id="phone" pattern="[6-9][0-9]{9}" class="form-control" placeholder="Phone: 9876543210">
-    </div>
+              <div class="col-lg-6 col-12">
+                <!-- ✅ Indian mobile number -->
+                <input type="tel" name="phone" id="phone" pattern="[6-9][0-9]{9}" class="form-control" placeholder="Phone: 9876543210">
+              </div>
 
-    <div class="col-lg-6 col-12">
-      <input type="date" name="date" id="date" class="form-control">
-    </div>
+              <div class="col-lg-6 col-12">
+                <input type="date" name="date" id="date" class="form-control">
+              </div>
 
-    <div class="col-12">
-      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
-    </div>
+              <div class="col-12">
+                <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
+              </div>
 
-    <div class="col-lg-3 col-md-4 col-6 mx-auto">
-      <button type="submit" class="form-control" id="submit-button">Book Now</button>
-    </div>
-  </div>
-</form>
+              <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                <button type="submit" class="form-control" id="submit-button">Book Now</button>
+              </div>
+            </div>
+          </form>
 
-<!-- EmailJS Script -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-<script>
-  (function() {
-    // ✅ Initialize EmailJS with your public key
-    emailjs.init("3bsdZjXroTzLKiPsi");
-  })();
+          <!-- ✅ Correct EmailJS Script -->
+          <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+          <script>
+            (function() {
+              emailjs.init("3bsdZjXroTzLKiPsi"); // your public key
+            })();
 
-  // ✅ Handle form submit
-  document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+            document.getElementById("contact-form").addEventListener("submit", function(event) {
+              event.preventDefault();
 
-    emailjs.sendForm("service_xdya1jj", "template_wln1psg", this)
-      .then(function() {
-        alert("✅ Your booking request has been sent!");
-        document.getElementById("contact-form").reset(); // clear form after submit
-      }, function(error) {
-        alert("❌ Failed to send. Error: " + JSON.stringify(error));
-      });
-  });
-</script>
+              emailjs.sendForm("service_xdya1jj", "template_wln1psg", this)
+                .then(function() {
+                  alert("✅ Your booking request has been sent!");
+                  document.getElementById("contact-form").reset();
+                }, function(error) {
+                  alert("❌ Failed to send. Error: " + JSON.stringify(error));
+                });
+            });
+          </script>
             
         </main>
 
